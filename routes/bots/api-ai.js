@@ -18,7 +18,9 @@ var actions = {
 function apiaiPost (req, res) {
 	
 	console.log('\n\n===============================================\n')
-	console.log('\n' + JSON.stringify(req.body, undefined, 2))
+	console.log(JSON.stringify(req.body))
+	console.log('\n')
+	console.log(JSON.stringify(req.body, undefined, 2))
 	console.log('\n===============================================\n\n')
 
 	var result = req.body.result
