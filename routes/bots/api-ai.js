@@ -16,8 +16,10 @@ var actions = {
 }
 
 function apiaiPost (req, res) {
-	console.log(req.body)
-	console.log(req.body.result.contexts)
+	
+	console.log('\n\n\n\n===============================================\n\n')
+	console.log(JSON.stringify(req.body))
+	console.log('\n\n===============================================\n\n\n\n')
 
 	var result = req.body.result
 	var action = actions[result.action]
@@ -149,7 +151,7 @@ function actionAprenderPalavra(res, result) {
 				lifespan: 5,
 				parameters: {
 					vocabulo: response
-				}
+				},
 			}]
 
 			responder(res, response, telegram,contextOut)
