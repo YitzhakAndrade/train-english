@@ -20,6 +20,7 @@
   "private": true,
   "scripts": {
     "start": "node ./index.js",
+    "fast-commit": "git add . &&  git commit -m \"fast commit\" && git push",
     "fast-deploy": "git add . &&  git commit -m \"fast deploy\" && git push heroku master"
   },
   "engines": {

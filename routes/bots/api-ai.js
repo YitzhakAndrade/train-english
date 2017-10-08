@@ -33,7 +33,15 @@ function responder(res, response) {
 	res.setHeader('Content-Type', 'application/json')
 	res.send(JSON.stringify({ 
 		speech: response, 
-		displayText: response
+		displayText: response,
+		data: {
+			telegram: {
+				inline_keyboard: [
+					{ text: 'Tradução de Cervo', callback_data: 'O que é deer?' },
+					{ text: 'Tradução de Querido', callback_data: 'O que é dear?' },
+				]
+			}
+		}
 	}))
 }
 
