@@ -24,40 +24,63 @@ function apiaiPost (req, res) {
 		action(res, result)
 	}
 	else {
-		responder(res, 'é isso aí !!')
+		responder(res, 'Ação não encontrada.')
 	}
 
 }
 
-function responder(res, response) {
+function telegram_keyboard() {
+	return {
+		reply_markup: {
+			keyboard: [
+				[{ text: 'Tradução de Cervo' }],
+				[{ text: 'Tradução de Querido' }],
+			],
+			one_time_keyboard: true,
+		}
+	}
+}
+
+function telegram_inlineKeyboard() {
+	return {
+		reply_markup: {
+			inline_keyboard: [
+				[{ text: 'Tradução de Cervo', callback_data: 'O que é deer?' }],
+				[{ text: 'Tradução de Querido', callback_data: 'O que é dear?' }],
+			],
+		}
+	}
+}
+
+function telegram_removeKeyboard() {
+	return {
+		reply_markup: {
+			remove_keyboard: true,
+		}
+	}
+}
+
+function telegram(data, response, telegram) {
+	if (telegram) {
+		telegram.text = response
+		data.telegram = telegram		
+	}
+	return data
+}
+
+function responder(res, response, telegram) {
+	var data = {}
+	data = telegram(data, telegram)
+
 	res.setHeader('Content-Type', 'application/json')
 	res.send(JSON.stringify({ 
 		speech: response, 
 		displayText: response,
-		data: {
-			telegram: {
-				text: response,
-				reply_markup: {
-					
-					/*inline_keyboard: [
-						[{ text: 'Tradução de Cervo', callback_data: 'O que é deer?' }],
-						[{ text: 'Tradução de Querido', callback_data: 'O que é dear?' }],
-					]*/
-
-					keyboard: [
-						[{ text: 'Tradução de Cervo' }],
-						[{ text: 'Tradução de Querido' }]
-					],
-					one_time_keyboard: true
-
-				}
-			}
-		}
+		data: data,
 	}))
 }
 
-function actionTraduzir(res, result) {	
-	//var vocabulo = result.parameters.vocabulo
+function actionTraduzir(res, result) {
 	var vocabulo = jsonQuery('[name=vocabulo]', { data: result.contexts }).value.parameters.vocabulo
 
 	vocabuloModel.findOne({ 
@@ -75,12 +98,11 @@ function actionTraduzir(res, result) {
 		} else {
 			response = 'Palavra ou expressão não cadastrada.'
 		}
-		responder(res, response)
+		responder(res, response, telegram_removeKeyboard())
 	})
 }
 
-function actionExemplo(res, result) {	
-	//var vocabulo = result.parameters.vocabulo
+function actionExemplo(res, result) {
 	var vocabulo = jsonQuery('[name=vocabulo]', { data: result.contexts }).value.parameters.vocabulo
 
 	vocabuloModel.findOne({ 
@@ -101,7 +123,7 @@ function actionExemplo(res, result) {
 		} else {
 			response = 'Palavra ou expressão não cadastrada.'
 		}
-		responder(res, response)
+		responder(res, response, telegram_inlineKeyboard())
 	})
 }
 
