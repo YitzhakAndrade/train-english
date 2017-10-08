@@ -38,9 +38,13 @@ function responder(res, response) {
 			telegram: {
 				text: response,
 				reply_markup: {
-					inline_keyboard: [
+					/*inline_keyboard: [
 						[{ text: 'Tradução de Cervo', callback_data: 'O que é deer?' }],
 						[{ text: 'Tradução de Querido', callback_data: 'O que é dear?' }],
+					]*/
+					keyboard: [
+						[ text: 'Tradução de Cervo' ],
+						[ text: 'Tradução de Querido' ]
 					]
 				}
 			}
