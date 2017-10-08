@@ -70,7 +70,7 @@ function telegram_fn(data, response, telegram) {
 
 function responder(res, response, telegram) {
 	var data = {}
-	data = telegram_fn(data, telegram)
+	data = telegram_fn(data, response, telegram)
 
 	res.setHeader('Content-Type', 'application/json')
 	res.send(JSON.stringify({ 
