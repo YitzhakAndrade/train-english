@@ -1,0 +1,36 @@
+{
+  "name": "train-english",
+  "version": "0.0.1",
+  "description": "train-english",
+  "contributors": [
+    {
+      "name": "Yitzhak Andrade",
+      "email": "yitzhakandrade@gmail.com"
+    }
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YitzhakAndrade/train-english.git"
+  },
+  "bugs": {
+    "url": "https://github.com/YitzhakAndrade/train-english/issues"
+  },
+  "homepage": "https://github.com/YitzhakAndrade/train-english",
+  "private": true,
+  "scripts": {
+    "start": "node ./index.js",
+    "fast-deploy": "git add . &&  git commit -m \"fast deploy\" && git push heroku master"
+  },
+  "engines": {
+    "node": "6.11.x"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.1",
+    "json-query": "^2.2.2",
+    "mongoose": "^4.12.0",
+    "morgan": "^1.9.0"
+  }
+}
