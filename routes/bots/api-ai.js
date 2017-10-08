@@ -11,7 +11,8 @@ module.exports = router
 
 var actions = {
 	traduzir: actionTraduzir,
-	exemplo: actionExemplo
+	exemplo: actionExemplo,
+	aprenderPalavra: actionAprenderPalavra,
 }
 
 function apiaiPost (req, res) {
