@@ -47,7 +47,7 @@ function telegram_inlineKeyboard() {
 	return {
 		reply_markup: {
 			inline_keyboard: [
-				[{ text: 'Tradução?', callback_data: 'E qual é a tradução?' }],
+				[{ text: 'Tradução', callback_data: 'E qual é a tradução?' }],
 				[{ text: 'Exemplo', callback_data: 'Me dê um exemplo' }],
 				[{ text: 'Exercício', callback_data: 'Quero um exercício' }],
 			],
@@ -99,7 +99,7 @@ function actionTraduzir(res, result) {
 			response = 'Ocorreu um erro no servidor.'
 		} else if (obj) {
 			response = "A tradução de '" + (obj.palavra || obj.expressao) + "' é '" + obj.traducao + "'"
-			telegram = telegram_keyboard()
+			telegram = telegram_inlineKeyboard()
 		} else {
 			response = 'Palavra ou expressão não cadastrada.'
 		}
@@ -126,7 +126,7 @@ function actionExemplo(res, result) {
 				response = "Exemplo: " + obj.exemplos[randomNumber(obj.exemplos.length)]
 			else
 				response = 'Esta palavra ou expressão não possui exemplos cadastrados.'
-			telegram = telegram_keyboard()
+			telegram = telegram_inlineKeyboard()
 		} else {
 			response = 'Palavra ou expressão não cadastrada.'
 		}
