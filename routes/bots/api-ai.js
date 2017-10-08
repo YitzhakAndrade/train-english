@@ -134,6 +134,19 @@ function actionExemplo(res, result) {
 	})
 }
 
+function actionAprenderPalavra(res, result) {
+	vocabuloModel.count().exec(function (err, count) {
+		var random = Math.floor(Math.random() * count)
+		vocabuloModel.findOne().skip(random).exec(function (err, obj) {
+
+			var response = (obj.palavra || obj.expressao)
+			var telegram = telegram_inlineKeyboard()
+			responder(res, response, telegram)
+
+		})
+	})
+}
+
 function randomNumber(length) {
 	return Math.floor((Math.random() * length) + 1) - 1
 }

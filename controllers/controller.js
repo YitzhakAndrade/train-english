@@ -22,7 +22,7 @@ module.exports = function (Objeto) {
 					res.send({ success: true, message: 'Objeto adicionado.', id: obj._id, objeto: obj })
 				}
 			});
-				},
+		},
 
 		getOne: function(req, res) {
 			Objeto.findOne({ _id:req.params.id }, function(err, obj) {
