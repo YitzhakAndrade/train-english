@@ -72,7 +72,7 @@ function telegram_fn(data, response, telegram) {
 	return data
 }
 
-function responder(res, response, telegram) {
+function responder(res, response, telegram, contextOut) {
 	var data = {}
 	data = telegram_fn(data, response, telegram)
 
@@ -81,6 +81,7 @@ function responder(res, response, telegram) {
 		speech: response, 
 		displayText: response,
 		data: data,
+		contextOut: contextOut,
 	}))
 }
 
@@ -142,7 +143,16 @@ function actionAprenderPalavra(res, result) {
 
 			var response = (obj.palavra || obj.expressao)
 			var telegram = telegram_inlineKeyboard()
-			responder(res, response, telegram)
+
+			var contextOut = [{ 
+				name: 'vocabulo',
+				lifespan: 5,
+				parameters: {
+					vocabulo: response
+				}
+			}]
+
+			responder(res, response, telegram,contextOut)
 
 		})
 	})
