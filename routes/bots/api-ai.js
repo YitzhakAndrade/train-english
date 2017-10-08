@@ -60,7 +60,7 @@ function telegram_removeKeyboard() {
 	}
 }
 
-function telegram(data, response, telegram) {
+function telegram_fn(data, response, telegram) {
 	if (telegram) {
 		telegram.text = response
 		data.telegram = telegram		
@@ -70,7 +70,7 @@ function telegram(data, response, telegram) {
 
 function responder(res, response, telegram) {
 	var data = {}
-	data = telegram(data, telegram)
+	data = telegram_fn(data, telegram)
 
 	res.setHeader('Content-Type', 'application/json')
 	res.send(JSON.stringify({ 
