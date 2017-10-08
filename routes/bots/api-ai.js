@@ -36,10 +36,13 @@ function responder(res, response) {
 		displayText: response,
 		data: {
 			telegram: {
-				inline_keyboard: [
-					{ text: 'Tradução de Cervo', callback_data: 'O que é deer?' },
-					{ text: 'Tradução de Querido', callback_data: 'O que é dear?' },
-				]
+				text: response,
+				reply_markup: {
+					inline_keyboard: [
+						{ text: 'Tradução de Cervo', callback_data: 'O que é deer?' },
+						{ text: 'Tradução de Querido', callback_data: 'O que é dear?' },
+					]
+				}
 			}
 		}
 	}))
