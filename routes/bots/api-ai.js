@@ -39,8 +39,8 @@ function responder(res, response) {
 				text: response,
 				reply_markup: {
 					inline_keyboard: [
-						{ text: 'Tradução de Cervo', callback_data: 'O que é deer?' },
-						{ text: 'Tradução de Querido', callback_data: 'O que é dear?' },
+						[{ text: 'Tradução de Cervo', callback_data: 'O que é deer?' }],
+						[{ text: 'Tradução de Querido', callback_data: 'O que é dear?' }],
 					]
 				}
 			}
