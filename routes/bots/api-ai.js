@@ -43,8 +43,8 @@ function responder(res, response) {
 						[{ text: 'Tradução de Querido', callback_data: 'O que é dear?' }],
 					]*/
 					keyboard: [
-						[ text: 'Tradução de Cervo' ],
-						[ text: 'Tradução de Querido' ]
+						[{ text: 'Tradução de Cervo' }],
+						[{ text: 'Tradução de Querido' }]
 					]
 				}
 			}
