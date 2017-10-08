@@ -33,10 +33,12 @@ function telegram_keyboard() {
 	return {
 		reply_markup: {
 			keyboard: [
-				[{ text: 'Tradução de Cervo' }],
-				[{ text: 'Tradução de Querido' }],
+				[{ text: 'E qual é a tradução?' }],
+				[{ text: 'Me dê um exemplo' }],
+				[{ text: 'Quero um exercício' }],
 			],
 			one_time_keyboard: true,
+			resize_keyboard: true,
 		}
 	}
 }
@@ -123,7 +125,7 @@ function actionExemplo(res, result) {
 		} else {
 			response = 'Palavra ou expressão não cadastrada.'
 		}
-		responder(res, response, telegram_inlineKeyboard())
+		responder(res, response, telegram_keyboard())
 	})
 }
 
