@@ -4,16 +4,15 @@ var dbuser = process.env.TRAIN_ENGLISH_DB_USER
 var dbpass = process.env.TRAIN_ENGLISH_DB_PASS
 var dbname = 'train-english'
 
-// https://mlab.com
 var db = 
 	'mongodb://' + 
 	dbuser + ':' + 
 	dbpass + '@' + 
 	dbhost + ':' + 
 	dbport + '/' + 
-	dbname + '?ssl=true'
+	dbname
 
 // local
-//database = 'mongodb://localhost:27017/';
+//db = 'mongodb://localhost:27017/'
 
 module.exports = db
